@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="24dp"
+        tools:context=".ui.TicketDetailActivity">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvTicketTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Seu Bilhete"
+            android:textAppearance="?attr/textAppearanceHeadline5"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp"/>
+
+        <ImageView
+            android:id="@+id/ivQrCode"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_marginTop="32dp"
+            android:contentDescription="QR Code do Bilhete"
+            android:scaleType="fitCenter"
+            app:layout_constraintTop_toBottomOf="@id/tvTicketTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.3"
+            tools:srcCompat="@tools:sample/avatars" />
+        <!-- tools:srcCompat is for preview only -->
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvQrDataDebug"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="QR Data: "
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:maxLines="3"
+            android:ellipsize="end"
+            app:layout_constraintTop_toBottomOf="@id/ivQrCode"
+            app:layout_constraintStart_toStartOf="@id/ivQrCode"
+            app:layout_constraintEnd_toEndOf="@id/ivQrCode"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

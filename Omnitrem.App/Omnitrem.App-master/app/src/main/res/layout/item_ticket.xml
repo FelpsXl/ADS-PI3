@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="ticket"
+            type="com.example.omnitrem.network.model.ticket.TicketResponse" />
+        <variable
+            name="clickListener"
+            type="com.example.omnitrem.ui.MyTicketsAdapter.OnTicketClickListener" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:cardElevation="4dp"
+        app:cardCornerRadius="8dp"
+        android:onClick="@{() -> clickListener.onTicketClick(ticket)}">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/ivTransportIcon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:contentDescription="Ícone do Transporte"
+                tools:srcCompat="@drawable/ic_metro_placeholder" /> <!-- Placeholder -->
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvTicketType"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:text='@{ticket.transportType.equals("Onibus") ? "Ônibus" : ticket.transportType.equals("Trem") ? "Trem" : ticket.transportType.equals("Metro") ? "Metrô" : ticket.transportType}'
+                app:layout_constraintTop_toTopOf="@id/ivTransportIcon"
+                app:layout_constraintStart_toEndOf="@id/ivTransportIcon"
+                app:layout_constraintEnd_toStartOf="@id/tvTicketStatus"
+                tools:text="Metrô"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvPurchaseDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:textAppearance="?attr/textAppearanceBody2"
+                android:textColor="?attr/colorOnSurfaceVariant"
+                android:text='@{com.example.omnitrem.utils.DateUtils.formatFriendlyDate(ticket.purchaseDate)}'
+                app:layout_constraintTop_toBottomOf="@id/tvTicketType"
+                app:layout_constraintStart_toEndOf="@id/ivTransportIcon"
+                app:layout_constraintEnd_toEndOf="@id/tvTicketType"
+                tools:text="Comprado em: 26/05/2025 10:30"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvTicketStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text='@{ticket.valid ? "Válido" : "Utilizado"}'
+                android:textAppearance="?attr/textAppearanceCaption"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:background='@{ticket.valid ? @drawable/bg_status_valid : @drawable/bg_status_used}'
+                android:textColor="@android:color/white"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:text="Válido"
+                tools:background="@drawable/bg_status_valid"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

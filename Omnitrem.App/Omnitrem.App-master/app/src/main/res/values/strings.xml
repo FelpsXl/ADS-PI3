@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Omnitrem</string>
+    <string name="welcome_to_omnitrem">Bem-vindo(a) ao Omnitrem!</string>
+    <string name="welcome_subtitle">Sua jornada para um transporte mais inteligente começa aqui.</string>
+    <string name="action_login">Entrar</string>
+    <string name="action_register">Criar Conta</string>
+    <string name="app_logo_description">Logo do Omnitrem</string>
+    <string name="login_button_description">Botão para entrar na sua conta</string>
+    <string name="register_button_description">Botão para criar uma nova conta</string>
+</resources>
